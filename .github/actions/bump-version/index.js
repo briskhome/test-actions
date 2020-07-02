@@ -2,28 +2,27 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const { exec } = require("@actions/exec");
 
+const USER_ID = 'briskhome-bot';
+const USER_NAME = 'Briskhome Bot';
+const USER_EMAIL = 'heuels@osome.com';
+
 async function run() {
   try {
-    const actor = core.getInput("actor");
     const token = core.getInput("token");
-    const context = github.context;
-    const { owner, repo } = context.repo;
+    const {
+      ref,
+      repo: { owner, repo },
+    } = github.context;
 
     // Configure git
-    await exec("git", ['remote', 'set-url', 'origin', `https://${actor}:${token}@github.com/${owner}/${repo}.git`]);
-    await exec("git", ["config", "user.name", '"Osome Bot"']);
-    await exec("git", ["config", "user.email", '"heuels@osome.com"']);
+    const origin = `https://${USER_ID}:${token}@github.com/${owner}/${repo}.git`;
+    await exec("git", ["remote", "set-url", "origin", origin]);
+    await exec("git", ["config", "user.name", `"${USER_NAME}"`]);
+    await exec("git", ["config", "user.email", `"${USER_EMAIL}"`]);
 
-    // Bump minor version and capture it
-    let version = "";
-    await exec("npm", ["version", "minor"], {
-      listeners: { stdout: (data) => version += data.toString() },
-    });
-
-    // // Create a commit and push it
-    // await exec("git", ["add", "package.json"]);
-    // await exec("git", ["commit", "-m", version]);
-    await exec("git", ["push", "origin", `HEAD:${context.ref}`, '--tags']);
+    // Bump version and push the commit and tag
+    await exec("npm", ["version", "minor"]);
+    await exec("git", ["push", "origin", `HEAD:${ref}`, "--tags"]);
   } catch (error) {
     core.setFailed(error.message);
   }
