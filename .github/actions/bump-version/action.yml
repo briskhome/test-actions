@@ -1,0 +1,15 @@
+name: 'Bump application version as Osome Bot'
+description: 'Bump application version and commit the change'
+inputs:
+  actor:
+    description: 'Actor'
+    required: true
+  token:
+    description: 'Bot personal access token'
+    required: true
+outputs:
+  version:
+    description: 'Next application version'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

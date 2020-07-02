@@ -31,19 +31,24 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
 
-    - name: Run a multi-line script
-      run: |
-        git remote add github "https://briskhome-bot:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-        git pull github ${GITHUB_REF} --ff-only
+    - name: Bump version
+      uses: ./.github/actions/bump-version
+      with:
+        actor: briskhome-bot
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    # - name: Run a multi-line script
+    #   run: |
+    #     git remote add github "https://briskhome-bot:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+    #     git pull github ${GITHUB_REF} --ff-only
 
-        git config user.email "hello@briskhome.com"
-        git config user.name "Briskhome Bot"
+    #     git config user.email "hello@briskhome.com"
+    #     git config user.name "Briskhome Bot"
 
 
-        npm version minor --no-git-tag-version
-        git add package.json
-        VERSION=$(jq < package.json .version -r)
+    #     npm version minor --no-git-tag-version
+    #     git add package.json
+    #     VERSION=$(jq < package.json .version -r)
 
-        git commit -m "v$VERSION"
-        git push github HEAD:${GITHUB_REF}
+    #     git commit -m "v$VERSION"
+    #     git push github HEAD:${GITHUB_REF}
 
