@@ -1,0 +1,14 @@
+{
+  "name": "bump-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "package": "ncc build index.js -o dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3"
+  }
+}
