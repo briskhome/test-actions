@@ -7,14 +7,14 @@ async function run() {
     const actor = core.getInput("actor");
     const token = core.getInput("token");
     const context = github.context;
-    core.debug(`${JSON.stringify(github.context)}`)
-    core.debug(`"${actor}:${token}@github.com/${context.repository}.git"`)
+    const { owner, repo } = context.repo;
+    core.debug(`${actor}:${token}@github.com/${owner}/${repo}.git`)
     // Configure git
     await exec("git", [
       "remote",
       "add",
       "github",
-      `"${actor}:${token}@github.com/${context.repository}.git"`,
+      `${actor}:${token}@github.com/${owner}/${repo}.git`,
     ]);
     await exec("git", ["config", "user.name", '"Osome Bot"']);
     await exec("git", ["config", "user.email", '"heuels@osome.com"']);
