@@ -33,7 +33,7 @@ jobs:
 
     - name: Run a multi-line script
       run: |
-        git remote add github "https://github.com/$GITHUB_REPOSITORY.git"
+        git remote add github "https://briskhome-bot:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
         git pull github ${GITHUB_REF} --ff-only
 
         git config user.email "hello@briskhome.com"
