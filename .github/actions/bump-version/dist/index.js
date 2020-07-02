@@ -700,15 +700,12 @@ const { exec } = __webpack_require__(986);
 
 const USER_ID = 'briskhome-bot';
 const USER_NAME = 'Briskhome Bot';
-const USER_EMAIL = 'hellow@briskhome.com';
+const USER_EMAIL = 'hello@briskhome.com';
 
 async function run() {
   try {
     const token = core.getInput("token");
-    const {
-      ref,
-      repo: { owner, repo },
-    } = github.context;
+    const { ref, repo: { owner, repo } } = github.context;
 
     // Configure git
     const origin = `https://${USER_ID}:${token}@github.com/${owner}/${repo}.git`;
