@@ -7,6 +7,7 @@ async function run() {
     const actor = core.getInput("actor");
     const token = core.getInput("token");
     const context = github.context;
+    core.debug(`${JSON.stringify(github.context)}`)
     core.debug(`"${actor}:${token}@github.com/${context.repository}.git"`)
     // Configure git
     await exec("git", [
@@ -18,19 +19,13 @@ async function run() {
     await exec("git", ["config", "user.name", '"Osome Bot"']);
     await exec("git", ["config", "user.email", '"heuels@osome.com"']);
 
-    // Bump minor version
+    // Bump minor version and capture it
     let version = "";
     await exec("npm", ["version", "minor", "--no-git-tag-version"], {
-      listeners: {
-        stdout: (data) => {
-          myOutput += data.toString();
-        },
-      },
+      listeners: { stdout: (data) => version += data.toString() },
     });
 
-    await exec("ls -la", [], options);
     core.debug(version);
-    // const version = require('./package.json').version;
 
     // Create a commit and push it
     await exec("git", ["add", "package.json"]);
