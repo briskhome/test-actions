@@ -19,6 +19,7 @@ async function run() {
 
     // Bump version and push the commit and tag
     await exec("npm", ["version", "minor"]);
+    await exec("git", ["push", "origin", `HEAD:${ref}`]);
     await exec("git", ["push", "origin", `HEAD:${ref}`, "--tags"]);
   } catch (error) {
     core.setFailed(error.message);
