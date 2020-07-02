@@ -2,9 +2,9 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const { exec } = require("@actions/exec");
 
-const USER_ID = 'heuels';
-const USER_NAME = 'Egor Zaitsev';
-const USER_EMAIL = 'heuels@osome.com';
+const USER_ID = 'briskhome-bot';
+const USER_NAME = 'Briskhome Bot';
+const USER_EMAIL = 'hellow@briskhome.com';
 
 async function run() {
   try {

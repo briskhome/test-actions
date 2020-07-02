@@ -698,9 +698,9 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 const { exec } = __webpack_require__(986);
 
-const USER_ID = 'heuels';
-const USER_NAME = 'Egor Zaitsev';
-const USER_EMAIL = 'heuels@osome.com';
+const USER_ID = 'briskhome-bot';
+const USER_NAME = 'Briskhome Bot';
+const USER_EMAIL = 'hellow@briskhome.com';
 
 async function run() {
   try {
