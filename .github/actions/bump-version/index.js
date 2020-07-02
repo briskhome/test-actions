@@ -15,7 +15,7 @@ async function run() {
 
     // Bump minor version
     await exec('npm', ['version', 'minor', '--no-git-tag-version']);
-    const version = require('package.json').version;
+    const version = require('./package.json').version;
 
     // Create a commit and push it
     await exec('git', ['add', 'package.json']);
