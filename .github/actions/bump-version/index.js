@@ -15,11 +15,21 @@ async function run() {
 
     // Bump minor version
     await exec('npm', ['version', 'minor', '--no-git-tag-version']);
-    const version = require('./package.json').version;
+    let myOutput = '';
+    const options = {};
+    options.listeners = {
+      stdout: (data) => {
+        myOutput += data.toString();
+      },
+    };
+
+    await exec('ls -la', [], options)
+    core.debug(`myOutput: ${myOutput}`);
+    // const version = require('./package.json').version;
 
     // Create a commit and push it
     await exec('git', ['add', 'package.json']);
-    await exec('git', ['commit', `v${version}`]);
+    await exec('git', ['commit', `v1.2.3`]);
     await exec('git', ['push', 'github', `HEAD:${context.ref}`]);
   } catch (error) {
     core.setFailed(error.message);
