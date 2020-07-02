@@ -725,7 +725,7 @@ async function run() {
 
     // Create a commit and push it
     await exec('git', ['add', 'package.json']);
-    await exec('git', ['commit', `v1.2.3`]);
+    await exec('git', ['commit', '-m', `"v1.2.3"`]);
     await exec('git', ['push', 'github', `HEAD:${context.ref}`]);
   } catch (error) {
     core.setFailed(error.message);
