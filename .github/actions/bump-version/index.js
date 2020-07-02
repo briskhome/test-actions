@@ -16,13 +16,13 @@ async function run() {
 
     // Bump minor version and capture it
     let version = "";
-    await exec("npm", ["version", "minor", "--no-git-tag-version"], {
+    await exec("npm", ["version", "minor"], {
       listeners: { stdout: (data) => version += data.toString() },
     });
 
-    // Create a commit and push it
-    await exec("git", ["add", "package.json"]);
-    await exec("git", ["commit", "-m", `v${version}`]);
+    // // Create a commit and push it
+    // await exec("git", ["add", "package.json"]);
+    // await exec("git", ["commit", "-m", version]);
     await exec("git", ["push", "origin", `HEAD:${context.ref}`]);
   } catch (error) {
     core.setFailed(error.message);
