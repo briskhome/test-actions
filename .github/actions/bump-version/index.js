@@ -16,6 +16,8 @@ async function run() {
     //   "github",
     //   `${actor}:${token}@github.com/${owner}/${repo}.git`,
     // ]);
+
+    await exec("git", ['remote', 'set-url', 'origin', `https://${actor}:${token}@github.com/${owner}/${repo}.git`]);
     await exec("git", ["config", "user.name", '"Osome Bot"']);
     await exec("git", ["config", "user.email", '"heuels@osome.com"']);
 
