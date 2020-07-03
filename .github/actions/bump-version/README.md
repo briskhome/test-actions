@@ -34,3 +34,4 @@ You can only configure prefix of a tag. By default, the prefix is `v`, so in cas
 ```
 tag-version-prefix=""
 ``` 
+ 
