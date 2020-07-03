@@ -16,8 +16,8 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-    # - name: Bump version
-    #   uses: ./.github/actions/bump-version
-    #   with:
-    #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-    #   if: ${{ github.actor != 'osome-bot' }}
+    - name: Bump version
+      uses: ./.github/actions/bump-version
+      with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      if: ${{ github.actor != 'briskhome-bot' }}
