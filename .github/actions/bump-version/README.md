@@ -33,4 +33,4 @@ message="v%s"
 You can only configure prefix of a tag. By default, the prefix is `v`, so in case you want to remove it you need ot add the following line to your `.npmrc`:
 ```
 tag-version-prefix=""
-```
+``` 

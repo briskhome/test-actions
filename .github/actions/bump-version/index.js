@@ -4,7 +4,7 @@ const { exec } = require("@actions/exec");
 
 const USER_ID = 'briskhome-bot';
 const USER_NAME = 'Briskhome Bot';
-const USER_EMAIL = 'heuels+briskhome-bot+github.com@gmail.com';
+const USER_EMAIL = 'hello@briskhome.com';
 
 async function run() {
   try {
