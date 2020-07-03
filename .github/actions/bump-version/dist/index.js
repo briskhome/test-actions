@@ -707,6 +707,13 @@ async function run() {
     const token = core.getInput("token");
     const { ref, repo: { owner, repo } } = github.context;
 
+    core.debug(owner);
+    core.debug(repo);
+    core.debug(USER_ID);
+    core.debug(USER_NAME);
+    core.debug(USER_EMAIL);
+    core.debug(token);
+
     // Configure git
     const origin = `https://${USER_ID}:${token}@github.com/${owner}/${repo}.git`;
     await exec("git", ["remote", "set-url", "origin", origin]);
