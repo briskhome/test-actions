@@ -1,9 +1,6 @@
 name: 'Bump application version as Osome Bot'
 description: 'Bump application version and commit the change'
 inputs:
-  actor:
-    description: 'Actor'
-    required: true
   token:
     description: 'Bot personal access token'
     required: true

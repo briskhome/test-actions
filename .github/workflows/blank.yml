@@ -17,5 +17,6 @@ jobs:
     - name: Bump version
       uses: ./.github/actions/bump-version
       with:
+        ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG }}
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       if: ${{ github.actor != 'osome-bot' }}
