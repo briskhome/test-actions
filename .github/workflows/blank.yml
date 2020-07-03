@@ -9,6 +9,7 @@ on:
 
 jobs:
   bump-version:
+    if: ${{ github.actor != 'briskhome-bot' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -20,4 +21,3 @@ jobs:
       uses: ./.github/actions/bump-version
       with:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      if: ${{ github.actor != 'briskhome-bot' }}
