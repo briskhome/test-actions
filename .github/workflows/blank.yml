@@ -11,15 +11,15 @@ on:
 
 jobs:
   bump-version:
-    if: ${{ github.actor != 'briskhome-bot' }}
+    if: ${{ github.actor != 'osome-bot' }}
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        token: ${{ secrets.OSOME_BOT_TOKEN }}
 
-    - name: Bump version
-      uses: ./.github/actions/bump-version
+    - name: Bump application version
+      uses: 'OsomePteLtd/actions/packages/bump-version@master'
       with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        token: ${{ secrets.OSOME_BOT_TOKEN }}
