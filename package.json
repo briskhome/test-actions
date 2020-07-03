@@ -11,7 +11,7 @@
     "url": "git+https://github.com/briskhome/test-actions.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/briskhome/test-actions/issues"
   },
