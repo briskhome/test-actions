@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: heuels/setup-terraform@feature/problem-matcher
+    - run: |
+        terraform init
+    - run: |
+        terraform validate -json
+
